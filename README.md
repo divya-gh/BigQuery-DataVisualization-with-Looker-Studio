@@ -99,7 +99,7 @@ FROM dsongcp.flights_raw;
 
 ### Flight Delay Views and Schema: delyed by 20 min,
 
-<img src="./Snapshot/flight_delayed_20min_table" height="300" width="600">
+<img src="./Snapshot/flight_delayed_20min_table.png" height="300" width="600">
 
 ##### These views simplify downstream analysis by filtering flights based on delay thresholds.
 
