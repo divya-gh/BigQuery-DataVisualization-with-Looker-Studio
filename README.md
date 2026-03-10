@@ -25,15 +25,11 @@ Key goals include:
 ---
 
 # Dataset
+#### **Source:**  : US Bureau of Transportation Statistics
 
-**Source:**  
-US Bureau of Transportation Statistics
+#### **Dataset:**  : `dsongcp.flights_raw`
 
-**Dataset:**  
-`dsongcp.flights_raw`
-
-**Time Range:**  
-January 2015 – February 2015
+#### **Time Range:**  : January 2015 – February 2015
 
 **Key Fields**
 
@@ -75,9 +71,8 @@ Raw Data → BigQuery Table → BigQuery Views → Looker Studio → Interactive
 
 ---
 
-# BigQuery Data Transformation
-
-The raw flight dataset was transformed using **SQL views**.
+## BigQuery Data Transformation 
+  - The raw flight dataset was transformed using **SQL views**.
 
 ## Create Flights View
 
@@ -92,17 +87,36 @@ SELECT
   DISTANCE
 FROM dsongcp.flights_raw;
 
-## Create Delay Threshold Views:
-  - Flights delayed by 10 minutes
+<img src="./Snapshot/Create_view.png" height="300" width="600">
 
-images
+#### View Schema:
+<img src="./Snapshot/View_flights_schema.png" height="300" width="600">
+
+## Create Delay Threshold Views:
+  - Flights delayed by 10,20,30 minutes
+
+<img src="./Snapshot/Flight_delay_sql.png" height="300" width="600">
+
+### Flight Delay Views and Schema: delyed by 20 min,
+
+<img src="./Snapshot/flight_delayed_20min_table" height="300" width="600">
 
 ##### These views simplify downstream analysis by filtering flights based on delay thresholds.
 
-## Data Visualization with Looker Studio:
+### Views created:
+<img src="./Snapshot/views_tables.png" height="300" width="600">
+
+## Data Visualization with Looker Studio on Bigquery:
 - The BigQuery dataset was connected to Looker Studio to build an interactive analytics dashboard.
 
-## Dashboard Components:
+#### Looker studio can be directly connected from Bigquery or Big query data tables can be accessed from Looker studio data sources connectivity.
+###### Bigquery connection : 
+<img src="./Snapshot/Looker_studio_bigquery.png" height="300" width="600">
+
+#### Visualization:
+<img src="./Snapshot/flight_delay_20min_jan2025.png" height="300" width="600">
+
+## Looker Studio Dashboard Components:
 ### 1️⃣ Scatter Plot – Delay Correlation
   - Visualizes the relationship between departure delay and arrival delay.
 
@@ -111,8 +125,6 @@ images
 
 #### Insight:
   - Airlines with high departure delays typically also experience high arrival delays.
-
-Scatter Chart Example
 
 ### 2️⃣ Pie Chart – On-Time vs Late Flights
   - calculated field was created to classify flights.
@@ -123,7 +135,7 @@ WHEN ARR_DELAY < 15 THEN "ON TIME"
 ELSE "LATE"
 END
 
-imaage
+<img src="./Snapshot/add_field_delay_15.png" height="300" width="600">
 
 ##### This visualization shows the percentage of flights that arrive on time.
 
@@ -138,8 +150,6 @@ Pie Chart Example
 #### Insight:
   - Some airlines consistently experience higher delays than others.
 
-Bar Chart Example
-
 ## Interactive Dashboard Features
 
 #### The dashboard includes:
@@ -148,8 +158,8 @@ Bar Chart Example
   - Dynamic data exploration
   - Real-time filtering
   - Users can select a time period and instantly view updated analytics.
-
-Dashboard Example
+    
+<img src="./Snapshot/final_dashboard.png" height="300" width="600">
 
 ## Analysis & Key Insights
 ### From the analysis we observed:
@@ -196,7 +206,7 @@ Google Cloud	                       Cloud analytics platform
 ### Divya Shetty
 ### Data Analytics | Cloud Data | Generative AI
 
-#### GitHub:
+#### GitHub: 
 ##### https://github.com/divya-gh
 
 #### LinkedIn:
